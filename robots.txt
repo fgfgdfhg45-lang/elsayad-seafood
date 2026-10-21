@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /login.html
 
-Sitemap: https://elsayad-seafood-omega.vercel.app/sitemap.xml
+Sitemap: https://elsayad-seafood-sable.vercel.app/sitemap.xml
