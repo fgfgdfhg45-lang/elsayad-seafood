@@ -2,8 +2,8 @@ const CK=['مقلي','مشوي رده','مشوي سنجاري','مشوي فحم'
 const none=(a,img)=>a.map(n=>[n,'',null,img]);
 const C=[
 {t:'الصواني',pre:'صينية ',items:[['الصياد','1 مكاريل سنجاري + 2 بوري فحم + 2 بلطي + 3 باغة + نص سبيط مقلي + نص فيليه مقلي + ربع جمبري مقلي/مشوي + ربع فيليه مشوي/شيش + 2 سي فود بالكريمة + 2 شوربة حمراء',2250,'sayad'],['المستعجل','نص سبيط مقلي + نص فيليه مشوي + نص جمبري مقلي + 2 بلطي + 2 مكرونة + 2 باغة + 2 بوري مقلي + 2 سي فود',1700,'mus'],['العتاوله','4 بوري سنجاري + نص جمبري شيش + نص جمبري مشوي اسكندراني + 2 سي فود',1600,'ata'],['المعلم','2 مكاريل سنجاري + 2 بوري سنجاري + 2 بلطي + 2 باغة + نص جمبري مقلي + 2 سي فود',1550,'moa'],['العرسان','نص فيليه مشوي + نص سبيط مقلي + نص جمبري + نص كابوريا + 2 سي فود',1150,'ars'],['العائلة','5 بلطي سنجاري + 7 عود جمبري مقلي + 7 عود جمبري مشوي + 2 سي فود',1100,'fam'],['الأهل','4 بلطي + 4 باغة + 1 مكاريل',700,'ahl'],['الصحاب','3 بوري سنجاري + 6 عود جمبري مقلي',650,'sah'],['أنا وأنت','2 بلطي سنجاري + ربع جمبري مقلي + 2 سي فود',600,'ana'],['الشقيانين','5 بلطي فحم',400,'shq']]},
-{t:'الأسماك',sizes:S3,cook:1,items:[['بلطي','',[70,90,120],'shq'],['بوري','',[120,150,170],'sah'],['مكاريل','',[175,200,225],'ahl'],['باغة','',[75,90,100],'ahl'],['مكرونة','',[70,90,110],'shq'],['لوط','',[350,400,450],'ata'],['وجبة الصياد (فواكه بحر)','تتكون من فواكه البحر، ويضاف أرز وطحينة وسلطة وعيش',[250,300,350],'sea',1],['قاروص','',[250,300,350],'shq'],['دنيس','',[200,250,300],'ahl']]},
-{t:'أصناف بالوزن',cook:1,note:1,items:none(['بربوني','تعابين','جندوفلي','سبيط بلدي','كاليماري مجمد','جمبري مجمد','فيليه قشر بياض','فيليه لوط','جمبري بلدي'],'sea')},
+{t:'الأسماك',sizes:S3,cook:1,note:1,items:[['بلطي','',null,'shq'],['بوري','',null,'sah'],['مكاريل','',null,'ahl'],['باغة','',null,'ahl'],['مكرونة','',null,'shq'],['لوط','',null,'ata'],['وجبة الصياد (فواكه بحر)','تتكون من فواكه البحر، ويضاف أرز وطحينة وسلطة وعيش',[250,300,350],'sea',1],['قاروص','',null,'shq'],['دنيس','',null,'ahl']]},
+{t:'أصناف بسعر اليوم',cook:1,note:1,items:none(['بربوني','تعابين','جندوفلي','سبيط بلدي','كاليماري مجمد','جمبري مجمد','فيليه قشر بياض','فيليه لوط','جمبري بلدي'],'sea')},
 {t:'الجمبري',note:1,items:none(['جمبري مقلي','جمبري مشوي','جمبري وايت صوص','جمبري طاجن','جمبري اسكندراني','جمبري بتر فلاي'],'shrimp')},
 {t:'السبيط',note:1,items:none(['سبيط مقلي','سبيط مشوي','سبيط محشي','سبيط وايت صوص','سبيط بالخلطة'],'squid')},
 {t:'الكابوريا',note:1,items:none(['كابوريا بالخلطة','كابوريا مقلي','كابوريا طاجن'],'crab')},
@@ -18,8 +18,8 @@ function card(c,ci,ii){const it=c.items[ii],p=it[2],arr=Array.isArray(p);
 return '<article class="tray it" data-i="'+ci+'|'+ii+'" data-s="0"><div class="im"><img loading="lazy" src="'+IMG[it[3]]+'" alt="'+(c.pre||'')+it[0]+'"></div><div class="b"><h3>'+(c.pre||'')+it[0]+'</h3><p>'+it[1]+'</p>'
 +(arr?'<div class="szs">'+c.sizes.map((s,j)=>'<button type="button" class="sz'+(j?'':' on')+'" data-s="'+j+'">'+s+'</button>').join('')+'</div>':'')
 +(c.cook&&!it[4]?'<select class="ck" aria-label="طريقة التسوية">'+CK.map(x=>'<option>'+x+'</option>').join('')+'</select>':'')
-+'<div class="row"><span class="price pr">'+(p==null?'<small>السعر حسب الوزن</small>':(arr?p[0]:p)+' <small>جنيه</small>')+'</span><button type="button" class="btn sm add">أضف للطلب</button></div></div></article>'}
-function render(ci){const c=C[ci];pn.innerHTML=(c.note?'<p class="sub">الأصناف دي بتتسعّر بالوزن، هنأكد السعر معاك قبل التحضير.</p>':'')+'<div class="trays">'+c.items.map((_,i)=>card(c,ci,i)).join('')+'</div>';
++'<div class="row"><span class="price pr">'+(p==null?'<small>السعر حسب اليوم</small>':(arr?p[0]:p)+' <small>جنيه</small>')+'</span><button type="button" class="btn sm add">أضف للطلب</button></div></div></article>'}
+function render(ci){const c=C[ci];pn.innerHTML=(c.note?'<p class="sub">أسعار الأصناف دي بتتغير حسب اليوم، هنأكد السعر معاك قبل التحضير.</p>':'')+'<div class="trays">'+c.items.map((_,i)=>card(c,ci,i)).join('')+'</div>';
 tb.querySelectorAll('.tab').forEach((b,i)=>b.setAttribute('aria-selected',i===ci))}
 C.forEach((c,i)=>{const b=document.createElement('button');b.className='tab';b.role='tab';b.textContent=c.t;b.onclick=()=>render(i);tb.appendChild(b)});
 pn.onclick=e=>{const el=e.target.closest('.it');if(!el)return;const[ci,ii]=el.dataset.i.split('|'),c=C[ci],it=c.items[ii],sz=e.target.closest('.sz');

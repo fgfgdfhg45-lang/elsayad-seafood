@@ -128,3 +128,17 @@ footer{padding-bottom:90px}.credits{display:flex;justify-content:center;flex-wra
 
 .gbtn{width:100%;justify-content:center;background:#fff;color:#1f1f1f;border:2px solid var(--line);margin:6px 0 10px}.gbtn:hover{box-shadow:var(--shadow)}
 .or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.9rem;margin:2px 0 8px}.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* موتسكل الدليفري */
+.moto{--px:3px;position:fixed;left:0;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:flex-end;direction:ltr;pointer-events:none;transform:translateX(100vw);animation:motoGo 18s linear 2s infinite;will-change:transform}
+.mt-bike{transform:scaleX(-1);animation:motoBump .28s steps(2) infinite}
+.mt-bike svg{display:block;width:calc(26*var(--px));height:calc(16*var(--px))}
+.mt-a,.mt-b{animation:wheelA .16s steps(1) infinite}.mt-b{animation-name:wheelB}
+.mt-sign{direction:rtl;margin-bottom:calc(5*var(--px));margin-left:calc(2*var(--px));background:#12285a;color:#fff;border:3px solid #e8603c;padding:5px 12px;font-size:.78rem;line-height:1.5;white-space:nowrap;text-align:center;box-shadow:3px 3px 0 rgba(0,0,0,.25);clip-path:polygon(0 4px,4px 4px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 4px),0 calc(100% - 4px))}
+.mt-sign b{display:block;font-size:.9rem;color:#ffd7a8}.mt-sign span{display:block}
+@keyframes motoGo{0%{transform:translateX(100vw)}60%,100%{transform:translateX(-100%)}}
+@keyframes motoBump{to{transform:scaleX(-1) translateY(calc(-1*var(--px)))}}
+@keyframes wheelA{0%{opacity:1}50%,100%{opacity:0}}
+@keyframes wheelB{0%{opacity:0}50%,100%{opacity:1}}
+@media(min-width:800px){.moto{--px:4px;bottom:calc(96px + env(safe-area-inset-bottom,0px))}.mt-sign{font-size:.9rem}.mt-sign b{font-size:1.05rem}}
+@media(prefers-reduced-motion:reduce){.moto{display:none}}

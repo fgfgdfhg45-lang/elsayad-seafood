@@ -13,7 +13,7 @@ service cloud.firestore {
 
     // ===== الطلبات =====
     match /orders/{orderId} {
-      allow create: if request.resource.data.keys().hasOnly(['name','phone','address','notes','items','total','uid','status','createdAt'])
+      allow create: if request.resource.data.keys().hasOnly(['name','phone','address','type','pickupTime','notes','items','total','uid','status','createdAt'])
         && request.resource.data.keys().hasAll(['name','phone','address','items','total','status','createdAt'])
         && request.resource.data.name is string
         && request.resource.data.name.size() >= 2 && request.resource.data.name.size() <= 80
@@ -28,6 +28,8 @@ service cloud.firestore {
         && request.resource.data.total is number
         && request.resource.data.total >= 0 && request.resource.data.total <= 100000
         && request.resource.data.status == 'new'
+        && (!('type' in request.resource.data) || request.resource.data.type in ['delivery','pickup'])
+        && (!('pickupTime' in request.resource.data) || (request.resource.data.pickupTime is string && request.resource.data.pickupTime.size() <= 5))
         && request.resource.data.createdAt == request.time
         && validUid();
       allow read, update, delete: if isOwner();
