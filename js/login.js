@@ -12,3 +12,9 @@ else{const us=get('sy_users')||{};
  if(mode==='reg'){if(us[em]){m.textContent='الإيميل ده مسجل قبل كده. سجّل دخول.';return}us[em]={name:nm,p:enc(pw)};set('sy_users',us);set('sy_cur',{name:nm,email:em})}
  else{const u=us[em];if(!u||u.p!==enc(pw)){m.textContent='الإيميل أو كلمة المرور غلط.';return}set('sy_cur',{name:u.name,email:em})}}
 m.className='msg ok';m.textContent='تم بنجاح ✓';setTimeout(()=>location.href='index.html',600)};
+
+const GERR={'auth/popup-closed-by-user':'اتقفلت نافذة جوجل قبل ما تكمّل.','auth/cancelled-popup-request':'','auth/popup-blocked':'المتصفح منع نافذة جوجل، اسمح بالنوافذ المنبثقة وحاول تاني.','auth/unauthorized-domain':'الدومين ده مش مضاف في Firebase (Authorized domains).','auth/operation-not-allowed':'تسجيل جوجل لسه مش مفعّل في Firebase.'};
+$('gg').onclick=async()=>{const m=$('msg');m.className='msg';
+if(!(window.SY&&SY.enabled)){m.textContent='تسجيل جوجل بيشتغل بعد ربط Firebase وفتح الموقع من استضافة.';return}
+try{await SY.google();m.className='msg ok';m.textContent='تم تسجيل الدخول ✓';setTimeout(()=>location.href='index.html',500)}
+catch(x){m.textContent=GERR[x.code]!==undefined?GERR[x.code]:'حصل خطأ، حاول تاني.'}};

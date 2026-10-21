@@ -25,3 +25,7 @@
  - جيب Place ID لمطعمك من developers.google.com/maps/documentation/places/web-service/place-id (Place ID Finder).
  - الصقهم في js/google-config.js.
  - جوجل بترجّع حتى 5 تقييمات فقط (الأكثر صلة)، ولازم تظهر مع علامة Google ولينك صاحب التقييم، وده متعمل.
+
+5) تسجيل الدخول بجوجل:
+ - Firebase Console > Authentication > Sign-in method > Google > Enable (اختار إيميل الدعم) > Save.
+ - تأكد إن دومين موقعك في Authentication > Settings > Authorized domains.
