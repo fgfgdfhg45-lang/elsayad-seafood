@@ -33,7 +33,7 @@
 <div class="pdinfo">
 <h1>جندوفلي</h1>
 <p class="sub">أصناف بسعر اليوم · مطعم الصياد للمأكولات البحرية – كفر أيوب، بلبيس، الشرقية</p>
-<label class="cklbl" for="ck">طريقة التسوية</label><select class="ck" id="ck" aria-label="طريقة التسوية"><option>مقلي</option><option>مشوي رده</option><option>مشوي سنجاري</option><option>مشوي فحم</option><option>طاجن</option><option>فهيتا</option></select>
+<label class="cklbl" for="ck">طريقة التسوية</label><select class="ck" id="ck" aria-label="طريقة التسوية"><option>طاجن</option><option>فهيتا</option></select>
 <p class="price" id="pp"><small>السعر حسب اليوم</small></p>
 <label class="cklbl" for="wt">الكمية</label><div class="qty"><button type="button" class="qb" data-d="-1" aria-label="تقليل">−</button><div class="qm"><input class="qi" id="wt" type="text" inputmode="decimal" autocomplete="off" value="0.5" aria-label="الكمية بالكيلو"><span class="qu">كيلو</span></div><button type="button" class="qb" data-d="1" aria-label="زيادة">+</button></div><label class="cklbl" for="nt">ملاحظات (اختياري)</label><textarea class="nt" id="nt" rows="2" maxlength="120"></textarea>
 <div class="cta"><button type="button" class="btn" id="addb">أضف للطلب</button><a class="btn wa" href="https://wa.me/201009127745?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A3%D9%86%20%D8%A3%D8%B7%D9%84%D8%A8%3A%20%D8%AC%D9%86%D8%AF%D9%88%D9%81%D9%84%D9%8A" target="_blank" rel="noopener">اطلب على واتساب</a></div>
@@ -42,8 +42,8 @@
 </div></div>
 <article class="pdtxt">
 <h2>عن جندوفلي</h2>
-<p data-en="Gandofli is one of our market-price items; its price changes daily with the market because it is sourced fresh.">جندوفلي من الأصناف اللي سعرها بيتغير حسب سعر اليوم في السوق، لأنها بتتجاب طازجة ومش ليها سعر ثابت.</p><p data-en="We confirm the price with you on WhatsApp before preparing. Available cooking methods: Fried, Grilled Radda, Grilled Sangari, Charcoal-Grilled, Tagine, Fahita.">هنأكد معاك السعر على واتساب قبل التحضير. طرق التسوية المتاحة: مقلي، مشوي رده، مشوي سنجاري، مشوي فحم، طاجن، فهيتا.</p>
-<h2>طرق التسوية المتاحة</h2><p>مقلي، مشوي رده، مشوي سنجاري، مشوي فحم، طاجن، فهيتا.</p>
+<p data-en="Gandofli is one of our market-price items; its price changes daily with the market because it is sourced fresh.">جندوفلي من الأصناف اللي سعرها بيتغير حسب سعر اليوم في السوق، لأنها بتتجاب طازجة ومش ليها سعر ثابت.</p><p data-en="We confirm the price with you on WhatsApp before preparing. Available cooking methods: Fried, Grilled Radda, Grilled Sangari, Charcoal-Grilled, Tagine, Fahita.">هنأكد معاك السعر على واتساب قبل التحضير. طرق التسوية المتاحة: طاجن، فهيتا.</p>
+<h2>طرق التسوية المتاحة</h2><p>طاجن، فهيتا.</p>
 <h2>الأسعار</h2>
 <p class="sub">السعر حسب اليوم، وبنأكده معاك قبل التحضير.</p>
 <h2>الطلب والتوصيل</h2>
@@ -70,7 +70,7 @@
 <script src="../js/cart.js?v=20261103m"></script>
 <script src="../js/qty.js?v=20261103m"></script>
 <script>
-(function(){const P={"n": "جندوفلي", "sizes": null, "prices": null, "p": 0, "cks": ["مقلي", "مشوي رده", "مشوي سنجاري", "مشوي فحم", "طاجن", "فهيتا"]};let s=0;const pp=document.getElementById('pp'),ck=document.getElementById('ck'),ab=document.getElementById('addb'),box=document.getElementById('szs'),wt=document.getElementById('wt'),nt=document.getElementById('nt'),wa=document.querySelector('.cta a.wa');
+(function(){const P={"n": "جندوفلي", "sizes": null, "prices": null, "p": 0, "cks": ["طاجن", "فهيتا"]};let s=0;const pp=document.getElementById('pp'),ck=document.getElementById('ck'),ab=document.getElementById('addb'),box=document.getElementById('szs'),wt=document.getElementById('wt'),nt=document.getElementById('nt'),wa=document.querySelector('.cta a.wa');
 if(box)box.onclick=e=>{const b=e.target.closest('.sz');if(!b)return;s=+b.dataset.s;box.querySelectorAll('.sz').forEach(x=>x.classList.toggle('on',x===b));pp.innerHTML=P.prices[s]+' <small>جنيه</small>'};
 ab.onclick=()=>{let n=P.n;if(P.sizes)n+=' ('+P.sizes[s]+')';if(ck)n+=' – '+ck.value;else if(P.cks&&P.cks.length===1)n+=' – '+P.cks[0];
 if(wt)n+=' – '+SYqty.val(wt);SYcartAdd(n,P.prices?P.prices[s]:P.p,nt?nt.value.trim():'');ab.innerHTML='تمت الإضافة '+ICON_CHK;setTimeout(()=>ab.textContent='أضف للطلب',1200)};
